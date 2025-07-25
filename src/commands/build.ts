@@ -126,11 +126,13 @@ const buildExecScript = (packages: PackageDefinition[], prefix: string | undefin
 
   const code = js`#!/usr/bin/env node
 const path = require('path');
+const fs = require('fs');
 const child_process = require('child_process');
 const mapping = ${mapping};
 const modulesDirectory = ${directory};
 const definition = mapping[process.platform + '_' + process.arch];
-const packagePath = path.join(modulesDirectory, ...definition);
+const packagePaths = [path.join(modulesDirectory, ...definition), path.join(__dirname, 'node_modules', ...definition)];
+const packagePath = packagePaths.find(p => fs.existsSync(p)) || packagePaths[0];
 child_process.spawn(packagePath, process.argv.splice(2), {
   stdio: 'inherit',
   env: process.env,
