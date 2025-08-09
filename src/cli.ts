@@ -55,6 +55,13 @@ const tokenOption = <T>(builder: Argv<T>) =>
     describe: 'Token for the npm package',
   });
 
+const tagOption = <T>(builder: Argv<T>) =>
+  builder.option('tag', {
+    type: 'string',
+    describe: 'Tag of the npm package',
+  });
+
+
 const verboseOption = <T>(builder: Argv<T>) =>
   builder.option('verbose', {
     type: 'boolean',
@@ -114,6 +121,7 @@ void scriptName('goreleaser-npm-publisher')
         .then(filesOption)
         .then(keywordsOption)
         .then(tokenOption)
+        .then(tagOption)
         .then(verboseOption),
     options => publishHandler(options),
     [isDistEmptyCheck as never, createDistFolder as never, initLogger as never],

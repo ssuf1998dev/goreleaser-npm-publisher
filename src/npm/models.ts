@@ -10,6 +10,10 @@ export interface ErrorResponse {
   };
 }
 
+export interface PublishOptions extends BaseOptions {
+  tag?: string;
+}
+
 export interface PublishResponse {
   id: string;
   name: string;
