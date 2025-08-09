@@ -13,10 +13,12 @@ export const publishHandler: ActionType<PublishParams> = async args => {
   const packageFolders = sortBy(await readdir(context.distPath), p => -p.length);
   for (const packageFolder of packageFolders) {
     logger.info(context.packageFolder(packageFolder));
-    const packageInfo = await publish(context.packageFolder(packageFolder), { token: args.token });
+    const packageInfo = await publish(context.packageFolder(packageFolder), { token: args.token, tag: args.tag });
     await logger.group(`Successfully published ${packageInfo.id}`, async () => {
       logger.info(`Name: ${packageInfo.name}`);
       logger.info(`Version: ${packageInfo.version}`);
+      if (args.tag)
+        logger.info(`Tag: ${args.tag}`);
       logger.info(`Size: ${packageInfo.size}`);
       logger.info(`Unpacked size: ${packageInfo.unpackedSize}`);
       logger.info(`SHA sum: ${packageInfo.shasum}`);

@@ -14,4 +14,5 @@ interface BuildParams extends ListParams {
 
 interface PublishParams extends BuildParams {
   token?: string;
+  tag?: string;
 }

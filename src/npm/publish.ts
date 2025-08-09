@@ -1,8 +1,8 @@
 import { npmExec } from './exec';
-import { BaseOptions, PublishResponse } from './models';
+import { PublishOptions, PublishResponse } from './models';
 
-export const publish = async (path?: string, options?: BaseOptions) => {
-  return npmExec<PublishResponse>(['publish', '--access', 'public'], {
+export const publish = async (path?: string, options?: PublishOptions) => {
+  return npmExec<PublishResponse>(['publish', '--access', 'public', ...(options?.tag ? ['--tag', options.tag] : [])], {
     pwd: path,
     token: options?.token,
   });
