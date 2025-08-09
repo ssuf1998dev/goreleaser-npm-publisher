@@ -102,7 +102,7 @@ Displays a list of packages that can be built in the current project using the s
 #### Options
 
 | Option          | type    | Description                                                                  |
-|-----------------|---------|------------------------------------------------------------------------------|
+| --------------- | ------- | ---------------------------------------------------------------------------- |
 | **project**     | string  | Specifies the path to the root of the Go package.                            |
 | **builder**     | string  | The name of the builder whose output will be used for building the packages. |
 | **prefix**      | string  | NPM package scope prefix.                                                    |
@@ -115,7 +115,7 @@ Builds all packages that can be built in the current project using the specified
 The built packages can be found in the `dist/npm` folder.
 
 | Option          | Type     | Description                                                                                 |
-|-----------------|----------|---------------------------------------------------------------------------------------------|
+| --------------- | -------- | ------------------------------------------------------------------------------------------- |
 | **project**     | string   | Specifies the path to the root of the Go package.                                           |
 | **builder**     | string   | The name of the builder whose output will be used for building the packages.                |
 | **clear**       | boolean  | Clean the `dist/npm` folder before the build.                                               |
@@ -131,7 +131,7 @@ Builds and publishes to the `registry` all packages that can be built in the cur
 parameters.
 
 | Option          | Type     | Description                                                                                 |
-|-----------------|----------|---------------------------------------------------------------------------------------------|
+| --------------- | -------- | ------------------------------------------------------------------------------------------- |
 | **project**     | string   | Specifies the path to the root of the Go package.                                           |
 | **builder**     | string   | The name of the builder whose output will be used for building the packages.                |
 | **clear**       | boolean  | Clean the `dist/npm` folder before the build.                                               |
@@ -140,6 +140,7 @@ parameters.
 | **files**       | string[] | Files that should be included in the NPM package (e.g., `README.md`, `LICENSE` by default). |
 | **keywords**    | string[] | NPM package keywords.                                                                       |
 | **token**       | string   | The NPM authentication token.                                                               |
+| **tag**         | string   | Tag of the npm package.                                                                     |
 | **verbose**     | boolean  | Print verbose output.                                                                       |
 
 ## Structure of npm package:
@@ -209,7 +210,7 @@ go-package_darwin_arm64@0.0.17
 ### Platforms:
 
 | GOOS    | Node.js Platform |
-|---------|------------------|
+| ------- | ---------------- |
 | darwin  | darwin           |
 | linux   | linux            |
 | windows | win32            |
@@ -223,7 +224,7 @@ go-package_darwin_arm64@0.0.17
 ### Architectures:
 
 | GOARCH  | Node.js Platform |
-|---------|------------------|
+| ------- | ---------------- |
 | amd64   | x64              |
 | 386     | ia32             |
 | arm     | arm              |
